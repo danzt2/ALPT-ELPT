@@ -3,16 +3,16 @@ require_once FRAMEWORKPATH.'/includes/pdo.php';
 ini_set('memory_limit', '2G');
 
 //clean out data table
-copy('/var/www/html/ROI_Report.csv', '/var/www/html/documents/dump/ROI_Report.csv');
-unlink('/var/www/html/ROI_Report.csv');
-copy('/var/www/html/ROI_Report_Clean.csv', '/var/www/html/documents/dump/ROI_Report_Clean.csv');
-unlink('/var/www/html/ROI_Report_Clean.csv');
+copy('/var/www/html/E_ROI_Report.csv', '/var/www/html/documents/dump/E_ROI_Report.csv');
+unlink('/var/www/html/E_ROI_Report.csv');
+copy('/var/www/html/E_ROI_Report_Clean.csv', '/var/www/html/documents/dump/E_ROI_Report_Clean.csv');
+unlink('/var/www/html/E_ROI_Report_Clean.csv');
 
  try {
 	$conn = getPDO('WestAreaSystemPerformance');
 
  
-$sql = "TRUNCATE TABLE data";
+$sql = "TRUNCATE TABLE e_data";
  
 $q = $conn->query($sql); 
 $q->closeCursor();
@@ -69,6 +69,6 @@ JOIN `e_tmp_aftr` on e_tmp_bfore.NEiGHBOR = e_tmp_aftr.NEiGHBOR and e_tmp_bfore.
 } catch (PDOException $pe) {
 die("Could not connect to the database $dbname :" . $pe->getMessage());
 }
-header("Location: https://irvecaqg-wadtr-vm20.nss.vzwnet.com/query/E_performance_query.php");
+header("Location: https://irvecaqg-wadtr-vm20.nss.vzwnet.com/E_SectorVPI.php");
 
 ?>

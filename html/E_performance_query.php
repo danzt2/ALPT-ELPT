@@ -1,6 +1,11 @@
 <?php
 require_once FRAMEWORKPATH.'/includes/pdo.php';
 ini_set('memory_limit', '2G');
+
+copy('/var/www/html/E_DEC_BrokenSector.txt', '/var/www/html/documents/dump/E_DEC_BrokenSector.txt');
+unlink('/var/www/html/E_DEC_BrokenSector.txt');
+copy('/var/www/html/E_DEC_VPI.txt', '/var/www/html/documents/dump/E_DEC_VPI.txt');
+unlink('/var/www/html/E_DEC_VPI.txt');
  
 try {
 	$conn = getPDO('WestAreaSystemPerformance');
@@ -26,6 +31,11 @@ die("Could not connect to the database $dbname :" . $pe->getMessage());
 
 <!DOCTYPE html>
 <html>
+<style>
+tr:nth-child(even) {
+    background-color: #E0F0FF;
+}
+</style>
 <head>
 <title>PHP MySQL Query Data Demo</title>
 <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -37,7 +47,7 @@ die("Could not connect to the database $dbname :" . $pe->getMessage());
 		<input type="submit" value="Export Excel" />
 <div id="container">
 <h1>Performance</h1>
-<table class="table table-bordered table-condensed">
+<table class="table table-bordered table-condensed" border="1" cellpadding="3" cellspacing="1">
 <thead>
 <tr>
 <th>ID</th>
@@ -49,6 +59,8 @@ die("Could not connect to the database $dbname :" . $pe->getMessage());
 <th>New_Build</th>
 <th>Neighbor_Name</th>
  <th>Neighbor_ID</th>
+  <th>Broken_Sector_VPI</th>
+ <th>Broken_Sector_5Mbps</th>
  <th>Sector_ID</th>
  <th>HO_Att</th>
  <th>PDCP_DL_DataVol_MB_Before</th>
@@ -74,6 +86,8 @@ die("Could not connect to the database $dbname :" . $pe->getMessage());
 <td><?php echo htmlspecialchars($r['New_Build']); ?></td>
 <td><?php echo htmlspecialchars($r['Neighbor_Name']); ?></td>
 <td><?php echo htmlspecialchars($r['Neighbor_ID']); ?></td>
+<td><?php echo htmlspecialchars($r['Broken_Sector_VPI']); ?></td>
+<td><?php echo htmlspecialchars($r['Broken_Sector_<5Mbps']); ?></td>
 <td><?php echo htmlspecialchars($r['Sector_ID']); ?></td>
 <td><?php echo htmlspecialchars($r['HO_Att']); ?></td>
 <td><?php echo htmlspecialchars($r['PDCP_DL_DataVol_MB_Before']); ?></td>

@@ -68,6 +68,6 @@ JOIN `tmp_aftr` on tmp_bfore.NEiGHBOR = tmp_aftr.NEiGHBOR and tmp_bfore.ENODEB =
 } catch (PDOException $pe) {
 die("Could not connect to the database $dbname :" . $pe->getMessage());
 }
-header("Location: https://irvecaqg-wadtr-vm20.nss.vzwnet.com/query/performance_query.php");
+header("Location: https://irvecaqg-wadtr-vm20.nss.vzwnet.com/SectorVPI.php");
 
 ?>

@@ -1,6 +1,7 @@
 <?php
 require_once FRAMEWORKPATH.'/includes/pdo.php';
 ini_set('memory_limit', '2G');
+ini_set('max_execution_time', 0); 
 //clean out roi_report before load
 try {
 	$conn = getPDO('WestAreaSystemPerformance');
